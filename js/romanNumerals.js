@@ -1,15 +1,27 @@
 const toRoman = (num) => {
     let result = []
-    let romanToArabic = {'M': 1000, 'CM': 900, 'D': 500, 'CD': 400, 'C': 100, 'XC': 90, 'L': 50, 'XL': 40, 'X': 10, 'IX': 9, 'V': 5, 'IV': 4, 'I': 1};
-    for(let x in romanToArabic){
-        let arabic = romanToArabic[x]
-        let roman = x
-        while(num >= arabic){
-            result.push(roman)
-            num = num - arabic;
-        }    
+    const map = new Map()
+    map.set('M', 1000);
+    map.set('CM', 900);
+    map.set('D', 500)
+    map.set('CD', 400)
+    map.set('C', 100)
+    map.set('XC', 90)
+    map.set('L', 50)
+    map.set('XL', 40)
+    map.set('X', 10)
+    map.set('IX', 9)
+    map.set('V', 5)
+    map.set('IV', 4)
+    map.set('I', 1)
+    for(let [key, value] of map){
+        while(num >= value){
+            result.push(key)
+            num = num - value
+        }  
     }
     return result.join('')
+
 };
 
 module.exports.toRoman = toRoman;
